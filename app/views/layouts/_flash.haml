@@ -1,0 +1,9 @@
+- if !flash[:error].nil?
+  .alert.alert-error
+    = flash[:error]
+- if !flash[:warning].nil?
+  .alert.alert-warning
+    = flash[:warning]
+- if !flash[:success].nil?
+  .alert.alert-success
+    = flash[:success]

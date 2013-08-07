@@ -1,0 +1,19 @@
+.formulario
+  = form_tag(:action => 'confirmar_generacion_mes', :controller => 'cuentas')
+  %fieldset
+    %legend= @title
+    .campos
+      .row
+        .span4
+          %div
+            = label_tag "Año"
+          .controles
+            = text_field_tag 'anio'
+        .span4
+          %div
+            = label_tag "Mes"
+          .controles
+            = text_field_tag 'mes'
+  .acciones
+    = submit_tag 'Confirmar', :type => 'submit',:class => 'confirmar'
+    = link_to 'Volver', cuentas_path(), :class => 'cancelar'

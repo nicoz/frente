@@ -1,0 +1,19 @@
+%table.tabla-detalle
+  %thead
+    %tr
+      %th
+        = "#"
+      %th
+  %tbody
+    %tr
+      %td.celda_titulo
+        Nombre
+      %td
+        ="#{@calle.nombre}"
+      %td.celda_titulo
+        Habilitado
+      %td
+        - if @calle.habilitado
+          = "Si"
+        - else
+          = "No"

@@ -1,0 +1,21 @@
+#calles.principal
+  #cabezal
+    %h1 Visor de Callees
+    = link_to 'Nueva Calle', new_calle_path(), :class => 'nuevo'
+
+  #busqueda
+    =form_tag( search_calle_path, :method => "POST") do
+      %input{:type => "text", :class => "busqueda", :name => 'text'}
+      %button{:type => "submit", :class =>"buscar"}
+        Buscar
+
+  #cuerpo
+    - if !@resultado.nil?
+      = @resultado
+    .pagination
+      = will_paginate @calles, :renderer => PaginationListLinkRenderer
+
+    = render 'tabla', :calles => @calles
+
+    .pagination
+      = will_paginate @calles, :renderer => PaginationListLinkRenderer

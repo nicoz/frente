@@ -1,0 +1,133 @@
+= form_for @adherente, :html => {:class => 'formulario'} do |f|
+  %fieldset
+    %legend= @title
+    .campos
+      .row
+        .span4
+          = f.label :apellidos
+          .controles
+            = f.text_field :apellidos, :class => 'largo'
+        .span4
+          = f.label :nombres
+          .controles
+            = f.text_field :nombres, :class => 'largo'
+      .row
+        .span2
+          = f.label :ci
+          .controles
+            = f.text_field :ci, :class => 'corto'
+        .span2
+          = f.label :cc
+          .controles
+            = f.text_field :cc, :class => 'corto'
+        .span2
+          = f.label :fecha_nacimiento
+          .controles
+            - if !@adherente.fecha_nacimiento.nil?
+              = f.text_field :fecha_nacimiento, :value => "#{l @adherente.fecha_nacimiento}", :class => 'corto datepicker'
+            - else
+              = f.text_field :fecha_nacimiento, :class => 'corto datepicker'
+      .row
+        .span4
+          = f.label :localidad
+          .controles
+            = f.select(:localidad_id, options_for_select(@localidades.collect {|l| [ l.nombre, l.id ] }, @adherente.localidad_id), {:include_blank => 'Ninguna Localidad'}) if !@localidades.nil?
+            = f.select(:localidad_id, options_for_select([]), {:include_blank => 'Ninguna Localidad'}) if @localidades.nil?
+        .span4
+          = f.label :email
+          .controles
+            = f.text_field :email, :class => 'largo'
+      .row
+        .span4
+          = f.label :coordinadora
+          .controles
+            = f.text_field :coordinadora, :class => 'corto'
+        .span4
+          = f.label :comite_id
+          .controles
+            = f.select(:comite_id, options_for_select(@comites.collect {|c| [ c.nombre, c.id ] }, @adherente.comite_id), {:include_blank => 'Ningun Comite'}) if !@comites.nil?
+            = f.select(:comite_id, options_for_select([]), {:include_blank => 'Ningun Comite'}) if @comites.nil?
+      .row
+        .span4
+          = f.label :fecha_solicitud
+          .controles
+            - if !@adherente.fecha_solicitud.nil?
+              = f.text_field :fecha_solicitud, :value => "#{l @adherente.fecha_solicitud}", :class => 'corto datepicker'
+            - else
+              = f.text_field :fecha_solicitud, :class => 'corto datepicker'
+        .span4
+          = f.label :cotizacion
+          .controles
+            = f.text_field :cotizacion, :class => 'corto'
+
+      %hr
+      %h3 Direccion
+      .row
+        .span4
+          = f.label :calle_principal_nombre, 'Calle Principal'
+          .controles
+            = f.text_field :calle_principal_nombre, :class => 'largo autocompleta',
+              :value => @adherente.calle_principal.to_s if !@adherente.calle_principal.nil?
+            = f.text_field :calle_principal_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.calle_principal.nil?
+      .row
+        .span4
+          = f.label :primera_lateral_nombre, 'Primera Lateral'
+          .controles
+            = f.text_field :primera_lateral_nombre, :class => 'largo autocompleta',
+              :value => @adherente.primera_lateral.to_s if !@adherente.primera_lateral.nil?
+            = f.text_field :primera_lateral_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.primera_lateral.nil?
+        .span4
+          = f.label :segunda_lateral_nombre, 'Segunda Lateral'
+          .controles
+            = f.text_field :segunda_lateral_nombre, :class => 'largo autocompleta',
+              :value => @adherente.segunda_lateral.to_s if !@adherente.segunda_lateral.nil?
+            = f.text_field :segunda_lateral_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.segunda_lateral.nil?
+      .row
+        .span4
+          = f.label :domicilio, 'Numero Puerta'
+          .controles
+            = f.text_field :domicilio, :class => 'corto'
+        .span4
+          = f.label :telefono
+          .controles
+            = f.text_field :telefono, :class => 'corto'
+      %hr
+      %h3 Direccion Cobro
+      .row
+        .span4
+          = f.label :calle_principal_cobro_nombre, 'Calle Principal'
+          .controles
+            = f.text_field :calle_principal_cobro_nombre, :class => 'largo autocompleta',
+              :value => @adherente.calle_principal_cobro.to_s if !@adherente.calle_principal_cobro.nil?
+            = f.text_field :calle_principal_cobro_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.calle_principal_cobro.nil?
+      .row
+        .span4
+          = f.label :primera_lateral_cobro_nombre, 'Primera Lateral'
+          .controles
+            = f.text_field :primera_lateral_cobro_nombre, :class => 'largo autocompleta',
+              :value => @adherente.primera_lateral_cobro.to_s if !@adherente.primera_lateral_cobro.nil?
+            = f.text_field :primera_lateral_cobro_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.primera_lateral_cobro.nil?
+        .span4
+          = f.label :segunda_lateral_cobro_nombre, 'Segunda Lateral'
+          .controles
+            = f.text_field :segunda_lateral_cobro_nombre, :class => 'largo autocompleta',
+              :value => @adherente.segunda_lateral_cobro.to_s if !@adherente.segunda_lateral_cobro.nil?
+            = f.text_field :segunda_lateral_cobro_nombre, :class => 'largo autocompleta',
+              :value => '' if @adherente.segunda_lateral_cobro.nil?
+      .row
+        .span4
+          = f.label :domicilio, 'Numero Puerta'
+          .controles
+            = f.text_field :domicilio_cobro, :class => 'corto'
+        .span4
+          = f.label :telefono
+          .controles
+            = f.text_field :telefono_cobro, :class => 'corto'
+  .acciones
+    = f.submit 'Confirmar', :type => 'submit',:class => 'confirmar'
+    = link_to 'Volver', adherentes_path(), :class => 'cancelar'

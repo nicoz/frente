@@ -1,0 +1,9 @@
+%td
+  = link_to calle.nombre, calle_path(calle)
+%td
+  = calle.localidad.nombre if !calle.localidad.nil?
+%td
+  - if calle.habilitado
+    = "Si"
+  - else
+    = "No"

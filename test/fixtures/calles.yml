@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  localidad_id: 1
+  habilitado: false
+
+two:
+  nombre: MyString
+  localidad_id: 1
+  habilitado: false

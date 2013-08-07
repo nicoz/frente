@@ -1,0 +1,21 @@
+= form_for @comite, :html => {:class => 'formulario'} do |f|
+  %fieldset
+    %legend= @title
+    .campos
+      .row     
+        .span4
+          = f.label :nombre
+          .controles
+            = f.text_field :nombre, :class => 'largo'
+        .span4
+          = f.label :habilitado
+          .controles
+            = f.check_box :habilitado   
+      .row     
+        .span4          
+          = f.label :localidad
+          .controles
+            = f.select(:localidad_id, options_for_select(@localidades.collect {|l| [ l.nombre, l.id ] }, @comite.localidad_id), {:include_blank => 'Ninguna Localidad'})              
+  .acciones
+    = f.submit 'Confirmar', :type => 'submit',:class => 'confirmar'
+    = link_to 'Volver', comites_path(), :class => 'cancelar'

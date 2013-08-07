@@ -1,0 +1,93 @@
+:javascript
+  $(function() {
+    new Highcharts.Chart({
+      chart: {
+        renderTo: 'container',
+        type: 'column'
+      },
+      credits: { enabled: false },
+      title: { text: 'Distribucion Etarea'},
+      xAxis: {
+        categories: [
+          'Grupos Etareos'
+        ]
+      },
+      yAxis: {
+       title: { text: 'Cantidad'}
+      },
+      series: [{
+          name: '18-24',
+          data: [
+           parseInt("#{@r18_24}")
+          ],
+          color: '#4572A7'
+        },
+        {
+          name: '25-40',
+          data: [
+            parseInt("#{@r25_40}")
+          ],
+          color: '#AA4643'
+        },
+        {
+          name: '41-60',
+          data: [
+           parseInt("#{@r41_60}")
+          ],
+          color: '#89A54E'
+        },
+        {
+          name: '61-80',
+          data: [
+            parseInt("#{@r61_80}")
+          ],
+          color: '#FF4040'
+        },
+        {
+          name: '81+',
+          data: [
+            parseInt("#{@r81}")
+          ],
+          color: '#CDAD00'
+        },{
+                type: 'pie',
+                name: 'Totales',
+                data: [{
+                    name: '18-24',
+                    y: parseInt("#{@p18_24}"),
+                    color: '#4572A7'
+                  }, {
+                    name: '25-40',
+                    y: parseInt("#{@p25_40}"),
+                    color: '#AA4643'
+                  }, {
+                    name: '41-60',
+                    y: parseInt("#{@p41_60}"),
+                    color: '#89A54E'
+                  }, {
+                    name: '61-80',
+                    y: parseInt("#{@p61_80}"),
+                    color: '#FF4040'
+                  }, {
+                    name: '81+',
+                    y: parseInt("#{@p81}"),
+                    color: '#CDAD00'
+                  }
+
+                ],
+                center: [100, 80],
+                size: 100,
+                showInLegend: false,
+                dataLabels: {
+                    enabled: false
+                }
+      }]
+    });
+  });
+
+
+#container{:style => "width: 100%; height: 600px"}
+
+.formulario
+  .acciones
+    = link_to 'Volver', ver_informes_path(), :class => 'cancelar'

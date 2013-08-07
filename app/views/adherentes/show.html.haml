@@ -1,0 +1,7 @@
+#adherentes.principal
+  #cabezal
+    %h1
+      = @title      
+    = link_to 'Editar', edit_adherente_path(@adherente), :class => 'editar'
+  #cuerpo
+    = render "detalle_adherente"

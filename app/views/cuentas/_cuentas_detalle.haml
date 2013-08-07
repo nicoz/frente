@@ -1,0 +1,45 @@
+%h2 Debe
+
+.pagination
+  = will_paginate @cuentas, :renderer => PaginationListLinkRenderer
+
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Fecha
+      %th
+        Importe
+      %th
+        Acciones
+  %tbody
+    - @cuentas.each do |cuenta|
+      %tr
+        = render 'cuenta', :cuenta => cuenta
+
+
+.pagination
+  = will_paginate @cuentas, :renderer => PaginationListLinkRenderer
+
+%h2 Historico
+
+.pagination
+  = will_paginate @historico, :renderer => PaginationListLinkRenderer
+
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Fecha
+      %th
+        Importe
+      %th
+        Acciones
+  %tbody
+    - @historico.each do |cuenta|
+      %tr
+        = render 'cuenta', :cuenta => cuenta
+
+
+.pagination
+  = will_paginate @historico, :renderer => PaginationListLinkRenderer

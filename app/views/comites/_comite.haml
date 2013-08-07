@@ -1,0 +1,9 @@
+%td
+  = link_to comite.nombre, comite_path(comite)
+%td
+  = comite.localidad.nombre if !comite.localidad.nil?
+%td
+  - if comite.habilitado
+    = "Si"
+  - else
+    = "No"

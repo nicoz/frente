@@ -1,0 +1,16 @@
+%td
+  = link_to adherente.ci, detalle_cuentas_path(adherente)
+%td
+  = "#{adherente.apellidos}, #{adherente.nombres}"
+%td
+  = adherente.localidad.nombre if !adherente.localidad.nil?
+%td
+  = adherente.comite.nombre if !adherente.comite.nil?
+%td
+  = adherente.direccion
+%td
+  = adherente.email
+%td
+  = adherente.telefono
+%td
+  = adherente.estado_cuenta_corriente

@@ -1,0 +1,7 @@
+%td
+  = link_to localidad.nombre, localidad_path(localidad)
+%td
+  - if localidad.habilitado
+    = "Si"
+  - else
+    = "No"

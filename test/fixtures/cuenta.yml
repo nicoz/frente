@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mes: 1
+  anio: 1
+  importe: 1.5
+  pagado: false
+  adherente_id: 1
+
+two:
+  mes: 1
+  anio: 1
+  importe: 1.5
+  pagado: false
+  adherente_id: 1

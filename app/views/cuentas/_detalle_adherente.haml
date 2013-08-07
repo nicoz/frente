@@ -1,0 +1,72 @@
+%table.tabla-detalle
+  %thead
+    %tr
+      %th
+        = "#"
+      %th        
+      %th
+      %th
+  %tbody
+    %tr
+      %td.celda_titulo
+        Nombre Completo
+      %td
+        ="#{@adherente.apellidos}, #{@adherente.nombres}"
+      %td.celda_titulo
+        Fecha Nacimiento
+      %td
+        = "#{l @adherente.fecha_nacimiento}" if !@adherente.fecha_nacimiento.nil?
+    %tr
+      %td.celda_titulo
+        Cedula
+      %td
+        =@adherente.ci    
+      %td.celda_titulo
+        Credencial Civica
+      %td
+        =@adherente.cc    
+    %tr
+      %td.celda_titulo
+        Dirección
+      %td
+        = @adherente.direccion
+      %td.celda_titulo
+        Telefono
+      %td
+        = @adherente.telefono
+    %tr
+      %td.celda_titulo
+        Correo Electronico
+      %td
+        =@adherente.email
+      %td.celda_titulo
+        Localidad
+      %td
+        =@adherente.localidad.nombre if !@adherente.localidad.nil?
+    %tr
+      %td.celda_titulo
+        Dirección de Cobro
+      %td
+        = @adherente.domicilio_cobro
+      %td.celda_titulo
+        Telefono de Cobro
+      %td
+        = @adherente.telefono_cobro
+    %tr
+      %td.celda_titulo
+        Coordinadora
+      %td
+        = @adherente.coordinadora
+      %td.celda_titulo
+        Comite
+      %td
+        = @adherente.comite.nombre if !@adherente.comite.nil?
+    %tr
+      %td.celda_titulo
+        Fecha de Solicitud
+      %td
+        = "#{l @adherente.fecha_solicitud}" if !@adherente.fecha_solicitud.nil?
+      %td.celda_titulo
+        Cotización
+      %td
+        = @adherente.cotizacion

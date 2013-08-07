@@ -1,0 +1,11 @@
+%td= "#{cuenta.anio}/#{cuenta.mes}"
+%td= cuenta.importe
+%td
+  %div
+    .remoto
+      - if !cuenta.pagado
+        = link_to 'Pagar', pagar_cuentas_path(), :data => {:id => cuenta.id}, :class => 'btn btn-info'
+      - else
+        = link_to 'Deber', deber_cuentas_path(), :data => {:id => cuenta.id}, :class => 'btn btn-success'
+      = link_to 'Anular', anular_cuentas_path(), :data => {:id => cuenta.id}, :class => 'btn btn-warning'
+      = link_to 'Imprimir', "#{factura_path(cuenta.adherente.id, cuenta.anio, cuenta.mes)}.pdf", :class => 'btn directo btn-inverse'

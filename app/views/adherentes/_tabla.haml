@@ -1,0 +1,21 @@
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Cedula
+      %th
+        Nombre
+      %th
+        Localidad
+      %th
+        Comite
+      %th
+        Direccion
+      %th
+        Email
+      %th
+        Telefono
+  %tbody
+    - adherentes.each do |adherente|
+      %tr
+        = render 'adherente', :adherente => adherente

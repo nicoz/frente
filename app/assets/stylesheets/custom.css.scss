@@ -1,0 +1,141 @@
+.contenedor {
+  @extend .container;
+}
+
+.principal {
+  @extend .container;
+
+  #cabezal {
+    @extend .well;
+
+
+  }
+}
+
+#titulo {
+  @extend .row;
+}
+
+#cuerpo {
+  @extend .row;
+}
+
+
+#navegacion {
+  @extend .well;
+  @extend .sidebar-nav;
+
+  .lista-navegacion {
+    @extend .nav;
+    @extend .nav-list;
+  }
+
+  .cabezal-navegacion {
+    @extend .nav-header;
+  }
+}
+
+#izquierda {
+  @include makeColumn(3);
+  margin-left: 0;
+}
+
+#derecha {
+  @include makeColumn(12);
+}
+.nuevo {
+	@extend .btn;
+	@extend .btn-large;
+	@extend .btn-success;
+}
+
+.editar {
+	@extend .btn;
+	@extend .btn-large;
+	@extend .btn-warning;
+}
+
+.buscar {
+	@extend .btn;
+	@extend .btn-large;
+	@extend .btn-info;
+}
+
+.tabla-listado {
+	@extend .table;
+	@extend .table-bordered;
+	@extend .table-zebra;
+}
+
+.tabla-detalle {
+	@extend .table;
+	@extend .span8;
+
+	.celda_titulo {
+		font-weight: bold;
+	}
+}
+
+#busqueda {
+	@extend .form-actions;
+	@extend .offset1;
+	@extend .span9;
+
+}
+
+.busqueda {
+	@extend .span9;
+	@extend .search-query;
+
+	height: 30px !important;
+}
+
+.formulario {
+   @extend .form-horizontal;
+
+   .acciones {
+     @extend .form-actions;
+
+     .confirmar {
+       @extend .btn;
+	   @extend .btn-success;
+     }
+
+     .cancelar {
+       @extend .btn;
+	   @extend .btn-danger;
+     }
+   }
+
+   fieldset {
+   	  padding-top: 10px;
+   }
+
+   .row {
+     padding-top: 10px;
+
+     label {
+       @extend .label;
+  	   @extend .label-info;
+  	   @extend .span2;
+     }
+
+     .largo {
+       @extend .span4;
+     }
+
+     .corto {
+     	@extend .span2;
+     }
+
+     .field_with_errors {
+   	   label {
+         @extend .label;
+  	     @extend .label-important;
+  	     @extend .span2;
+       }
+     }
+   }
+
+
+}

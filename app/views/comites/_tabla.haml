@@ -1,0 +1,13 @@
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Nombre
+      %th
+        Localidad
+      %th      
+        Habilitado            
+  %tbody
+    - comites.each do |comite|
+      %tr
+        = render 'comite', :comite => comite

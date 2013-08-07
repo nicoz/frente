@@ -1,0 +1,7 @@
+#calles.principal
+  #cabezal
+    %h1
+      = @title
+    = link_to 'Editar', edit_calle_path(@calle), :class => 'editar'
+  #cuerpo
+    = render "detalle_calle"

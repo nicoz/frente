@@ -1,0 +1,11 @@
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Nombre
+      %th
+        Habilitado      
+  %tbody
+    - localidades.each do |localidad|
+      %tr
+        = render 'localidad', :localidad => localidad

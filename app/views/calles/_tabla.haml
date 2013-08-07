@@ -1,0 +1,13 @@
+%table.tabla-listado
+  %thead
+    %tr
+      %th
+        Nombre
+      %th
+        Localidad
+      %th
+        Habilitado
+  %tbody
+    - calles.each do |calle|
+      %tr
+        = render 'calle', :calle => calle

@@ -1,0 +1,21 @@
+#localidades.principal
+  #cabezal
+    %h1 Visor de Localidades
+    = link_to 'Nueva Localidad', new_localidad_path(), :class => 'nuevo'
+
+  #busqueda
+    =form_tag( search_localidad_path, :method => "POST") do
+      %input{:type => "text", :class => "busqueda", :name => 'text'}
+      %button{:type => "submit", :class =>"buscar"}
+        Buscar
+
+  #cuerpo
+    - if !@resultado.nil?
+      = @resultado
+    .pagination
+      = will_paginate @localidades, :renderer => PaginationListLinkRenderer
+
+    = render 'tabla', :localidades => @localidades
+    
+    .pagination
+      = will_paginate @localidades, :renderer => PaginationListLinkRenderer

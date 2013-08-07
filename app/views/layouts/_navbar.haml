@@ -1,0 +1,49 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{:data => {:toggle => "collapse", :target => ".nav-collapse"}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => '#'}
+        Frente Amplio - Adherentes
+      .btn-group.pull-right
+        %a.btn.dropdown-toggle{:data => {:toggle => 'dropdown'}}
+          %i.icon-user
+          =current_user.email
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            %a{:href => '#'}
+              Perfil
+          %li.divider
+          %li
+            = link_to 'Salir del sistema', destroy_user_session_path, :method => 'delete'
+      .nav-collapse.collapse{:style => "height: 0px; "}
+        %ul.nav
+          %li
+            = link_to 'Inicio', root_path
+          %li
+            = link_to 'Adherentes', adherentes_path()
+          %li
+            = link_to 'Cuenta Corriente', cuentas_path()
+          %li
+            = link_to 'Localidades', localidads_path()
+          %li
+            = link_to 'Calles', calles_path()
+          %li
+            = link_to 'Comites', comites_path()
+          %li
+            = link_to 'Informes', ver_informes_path()
+          %li
+            %a{:href => '#'}
+              Acerca
+          %li
+            %a{:href => '#'}
+              Ayuda
+      <!--/.nav-collapse -->

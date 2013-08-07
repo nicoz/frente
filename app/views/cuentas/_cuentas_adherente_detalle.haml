@@ -1,0 +1,19 @@
+%h2
+  %strong= adherente.ci
+  = "- #{adherente.apellidos}, #{adherente.nombres}"
+.lead
+  -  if !adherente.localidad.nil?
+    = "Localidad: #{adherente.localidad.nombre} - "
+  - if !adherente.comite.nil?
+    = " Comite: #{adherente.comite.nombre}"
+    %ad
+  %address
+    %abbr{:title => 'Direccion'} Direccion:
+    ="#{adherente.direccion}"
+    %br
+    %abbr{:title => 'Email'} Email:
+    ="#{adherente.email}"
+    %abbr{:title => 'Telefono'} Telefono:
+    ="#{adherente.telefono}"
+
+%hr

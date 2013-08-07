@@ -1,0 +1,15 @@
+#informes.principal
+  #titulo
+    #cabezal
+      %h1 Visor de informes
+
+  #cuerpo
+    #izquierda
+      #navegacion
+        %ul.lista-navegacion
+          %li.cabezal-navegacion Menu de Reportes
+          %li= link_to 'Grupos Etareos', informe_etareo_path()
+          %li= link_to 'Comites', informe_comites_path()
+    #derecha
+      %h1  Informes
+      %p En esta seccion podra acceder a todos los informes del sistema

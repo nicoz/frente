@@ -1,0 +1,16 @@
+= form_for @localidad, :html => {:class => 'formulario'} do |f|
+  %fieldset
+    %legend= @title
+    .campos
+      .row     
+        .span4
+          = f.label :nombre
+          .controles
+            = f.text_field :nombre, :class => 'largo'
+        .span4
+          = f.label :habilitado
+          .controles
+            = f.check_box :habilitado                 
+  .acciones
+    = f.submit 'Confirmar', :type => 'submit',:class => 'confirmar'
+    = link_to 'Volver', localidads_path(), :class => 'cancelar'
