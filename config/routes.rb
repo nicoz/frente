@@ -1,4 +1,10 @@
 Frente::Application.routes.draw do
+
+  root :to => 'escritorio#index'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   match 'adherentes/search/' => 'adherentes#search', :as => :search_adherente
   match 'cuentas/search/' => 'cuentas#search', :as => :search_cuenta
   match 'localidads/search/' => 'localidads#search', :as => :search_localidad
@@ -37,6 +43,7 @@ Frente::Application.routes.draw do
   resources :calles
 
   devise_for :users
+  ActiveAdmin.routes(self)
 
 
   # The priority is based upon order of creation:
@@ -88,7 +95,6 @@ Frente::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'escritorio#index'
 
   # See how all your routes lay out with "rake routes"
 
