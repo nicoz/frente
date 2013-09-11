@@ -10,7 +10,14 @@ gem "meta_search", '>= 1.1.0.pre'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 gem 'devise'
 gem 'haml'
 gem 'will_paginate', '~> 3.0'
