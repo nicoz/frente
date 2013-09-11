@@ -19,7 +19,7 @@ class Calle < ActiveRecord::Base
   scope :inactivas, where(:habilitado => false)
   scope :por_nombre , lambda { |nombre| where("nombre like ?", "%#{nombre}%") }
   scope :por_localidad_y_nombre , lambda { |localidad, nombre|
-    where("nombre like ? and localidad_id = ?", "%#{nombre}%", localidad.to_i)}
+    where("nombre = ? and localidad_id = ?", nombre, localidad.to_i)}
   scope :por_localidad_y_nombre_filtrado , lambda { |localidad, nombre, distinto1, distinto2|
     where("nombre like ? and localidad_id = ? and nombre != ? and nombre != ?", "%#{nombre}%", localidad.to_i, distinto1, distinto2) }
 end

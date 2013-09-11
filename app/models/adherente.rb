@@ -1,9 +1,9 @@
 class Adherente < ActiveRecord::Base
   attr_accessible :nombres, :apellidos, :ci, :cc, :fecha_nacimiento,
                   :domicilio, :telefono, :domicilio_cobro, :telefono_cobro,
-  		  :departamento, :email, :coordinadora, :fecha_solicitud,
-  		  :cotizacion, :localidad_id, :comite_id, :calle_principal_id, :primera_lateral_id, :segunda_lateral_id,
-  		  :calle_principal_cobro_id, :primera_lateral_cobro_id, :segunda_lateral_cobro_id,
+        :departamento, :email, :coordinadora, :fecha_solicitud,
+        :cotizacion, :localidad_id, :comite_id, :calle_principal_id, :primera_lateral_id, :segunda_lateral_id,
+        :calle_principal_cobro_id, :primera_lateral_cobro_id, :segunda_lateral_cobro_id,
         :calle_principal, :primera_lateral, :segunda_lateral
 
 
@@ -42,10 +42,13 @@ class Adherente < ActiveRecord::Base
   end
 
   def direccion()
-    dir = "#{calle_principal.nombre unless calle_principal.nil?} #{domicilio}"
+    dir = "#{calle_principal.try(:nombre)} #{domicilio}"
+    Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    Rails.logger.info dir
     dir += "#{" Entre #{primera_lateral.nombre}" unless primera_lateral.nil?}"
     dir += "#{" Entre #{segunda_lateral.nombre}" unless segunda_lateral.nil?}" if primera_lateral.nil?
     dir += "#{" y #{segunda_lateral.nombre}" unless primera_lateral.nil? and segunda_lateral.nil?}" unless primera_lateral.nil?
+    dir
   end
 
   def edad()

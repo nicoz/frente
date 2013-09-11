@@ -96,7 +96,7 @@ def cargar_valores(params, adherente)
     adherente.ci = params[:adherente][:ci]
     adherente.cc = params[:adherente][:cc]
     adherente.fecha_nacimiento = params[:adherente][:fecha_nacimiento]
-    adherente.localidad = Localidad.find(params[:adherente][:localidad_id]) unless params[:adherente][:localidad_id].nil?    
+   
     adherente.email = params[:adherente][:email]
     adherente.coordinadora = params[:adherente][:coordinadora]
     adherente.comite_id = params[:adherente][:comite_id]
@@ -104,16 +104,22 @@ def cargar_valores(params, adherente)
     adherente.fecha_solicitud = params[:adherente][:fecha_solicitud]
     adherente.cotizacion = params[:adherente][:cotizacion]
     
-    adherente.calle_principal = cargar_calle(adherente.localidad, params[:adherente][:calle_principal_nombre]).first        
-    adherente.primera_lateral = cargar_calle(adherente.localidad, params[:adherente][:primera_lateral_nombre]).first            
-    adherente.segunda_lateral = cargar_calle(adherente.localidad, params[:adherente][:segunda_lateral_nombre]).first
+    if not( params[:adherente][:localidad_id].nil? or params[:adherente][:localidad_id].empty? )
+      adherente.localidad = Localidad.find(params[:adherente][:localidad_id])
+
+      adherente.calle_principal = cargar_calle(adherente.localidad, params[:adherente][:calle_principal_nombre]).first
+      Rails.logger.info '-------------------sjafdjsgj-----------------'
+      Rails.logger.info params[:adherente][:calle_principal_nombre]
+      adherente.primera_lateral = cargar_calle(adherente.localidad, params[:adherente][:primera_lateral_nombre]).first            
+      adherente.segunda_lateral = cargar_calle(adherente.localidad, params[:adherente][:segunda_lateral_nombre]).first
+      adherente.calle_principal_cobro = cargar_calle(adherente.localidad, params[:adherente][:calle_principal_cobro_nombre]).first
+      adherente.primera_lateral_cobro = cargar_calle(adherente.localidad, params[:adherente][:primera_lateral_cobro_nombre]).first
+      adherente.segunda_lateral_cobro = cargar_calle(adherente.localidad, params[:adherente][:segunda_lateral_cobro_nombre]).first
+    end
     
     adherente.domicilio = params[:adherente][:domicilio]
     adherente.telefono = params[:adherente][:telefono]
 
-    adherente.calle_principal_cobro = cargar_calle(adherente.localidad, params[:adherente][:calle_principal_cobro_nombre]).first
-    adherente.primera_lateral_cobro = cargar_calle(adherente.localidad, params[:adherente][:primera_lateral_cobro_nombre]).first
-    adherente.segunda_lateral_cobro = cargar_calle(adherente.localidad, params[:adherente][:segunda_lateral_cobro_nombre]).first
 
     adherente.domicilio_cobro = params[:adherente][:domicilio_cobro]
     adherente.telefono_cobro = params[:adherente][:telefono_cobro]
