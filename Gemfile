@@ -10,7 +10,10 @@ gem "meta_search", '>= 1.1.0.pre'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
 gem 'devise'
 gem 'haml'
 gem 'will_paginate', '~> 3.0'
@@ -35,6 +38,12 @@ end
 
 gem 'jquery-rails'
 
+
+group :production do 
+  gem 'rails_12factor'
+  gem 'pg'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -49,3 +58,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+ruby '1.9.3'
+
