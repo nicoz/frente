@@ -14,6 +14,10 @@ group :development do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'devise'
 gem 'haml'
 gem 'will_paginate', '~> 3.0'
@@ -23,9 +27,10 @@ gem 'rails-i18n'
 gem 'prawn'
 gem 'prawnto'
 
+gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+#group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bootstrap-sass'
   gem 'coffee-rails', '~> 3.2.1'
@@ -34,15 +39,7 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
-
-gem 'jquery-rails'
-
-
-group :production do 
-  gem 'rails_12factor'
-  gem 'pg'
-end
+#end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -58,6 +55,4 @@ end
 
 # To use debugger
 # gem 'debugger'
-
-ruby '1.9.3'
 
